@@ -50,7 +50,8 @@ export default class Avatar extends React.Component {
         round: React.PropTypes.bool,
         style: React.PropTypes.object,
         size: React.PropTypes.number,
-        textSizeRatio: React.PropTypes.number
+        textSizeRatio: React.PropTypes.number,
+        customImageStyle: React.PropTypes.object
     }
 
     static defaultProps = {
@@ -195,13 +196,14 @@ export default class Avatar extends React.Component {
 
     _renderAsImage() {
         const size = this.props.size;
+        const customImageStyle = this.props.customImageStyle;
         const round = this.props.round;
         const alt = this.props.name || this.props.value;
-        const imageStyle = {
+        const imageStyle = Object.assign({
             maxWidth: '100%',
             width: size,
             height: size
-        };
+        }, customImageStyle);
         return (
             <img width={this.props.size}
                 height={this.props.size}
